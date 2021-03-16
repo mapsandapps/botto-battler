@@ -103,15 +103,6 @@
 			"conditions": [],
 			"actions": [
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 628463798406849,
-					"parameters": {
-						"type": "log",
-						"message": "\"begin round\""
-					}
-				},
-				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
 					"sid": 111094809640430,
@@ -403,13 +394,8 @@
 					}
 				},
 				{
-					"id": "log",
-					"objectClass": "Browser",
-					"sid": 791270309857265,
-					"parameters": {
-						"type": "log",
-						"message": "\"attack\""
-					}
+					"callFunction": "UpdateStats",
+					"sid": 592479999422761
 				}
 			],
 			"sid": 747569620669030,
