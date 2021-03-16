@@ -46,6 +46,20 @@
 			"sid": 396045900245868
 		},
 		{
+			"eventType": "comment",
+			"text": "Set WonLastBattle here properly somewhere so that Pick Encounter can determine what choices to show next"
+		},
+		{
+			"eventType": "variable",
+			"name": "WonLastBattle",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 404697746279348
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "ePrepForCombat"
 		},
@@ -603,6 +617,15 @@
 					"sid": 247632162671460,
 					"parameters": {
 						"layout": "Pick Encounter"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 483351187023446,
+					"parameters": {
+						"variable": "WonLastBattle",
+						"value": "true"
 					}
 				}
 			],

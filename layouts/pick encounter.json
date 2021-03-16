@@ -6,38 +6,9 @@
 			"overriden": 0,
 			"instances": [
 				{
-					"type": "InvisibleButton",
-					"properties": {
-						"initially-visible": false,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 7,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 640,
-						"y": 509,
-						"width": 256,
-						"height": 128,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "Text",
 					"properties": {
-						"text": "Begin Random Encounter",
+						"text": "Pick an enemy to battle!",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -60,8 +31,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 512,
-						"y": 512,
+						"x": 451,
+						"y": 567,
 						"width": 256,
 						"height": 30,
 						"originX": 0,
@@ -124,6 +95,237 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "EnemyContainer",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 19,
+					"instanceVariables": {
+						"Name": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 219,
+						"y": 251,
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "EnemyContainer",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 21,
+					"instanceVariables": {
+						"Name": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 583,
+						"y": 247,
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "EnemyContainer",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 25,
+					"instanceVariables": {
+						"Name": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 920,
+						"y": 250,
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Enemy",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Full",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 20,
+					"instanceVariables": {
+						"DamageRoll": "3d6+4",
+						"Initiative": 50,
+						"HP": 36,
+						"MaxHP": 36,
+						"HasTakenTurn": false
+					},
+					"behaviors": {
+						"Fade": {
+							"properties": {
+								"fade-in-time": 0,
+								"wait-time": 0,
+								"fade-out-time": 1,
+								"destroy": true,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
+					"world": {
+						"x": 221,
+						"y": 242,
+						"width": 275,
+						"height": 420,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Enemy",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Full",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 23,
+					"instanceVariables": {
+						"DamageRoll": "3d6+4",
+						"Initiative": 50,
+						"HP": 36,
+						"MaxHP": 36,
+						"HasTakenTurn": false
+					},
+					"behaviors": {
+						"Fade": {
+							"properties": {
+								"fade-in-time": 0,
+								"wait-time": 0,
+								"fade-out-time": 1,
+								"destroy": true,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
+					"world": {
+						"x": 583,
+						"y": 240,
+						"width": 275,
+						"height": 420,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Enemy",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Full",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 24,
+					"instanceVariables": {
+						"DamageRoll": "3d6+4",
+						"Initiative": 50,
+						"HP": 36,
+						"MaxHP": 36,
+						"HasTakenTurn": false
+					},
+					"behaviors": {
+						"Fade": {
+							"properties": {
+								"fade-in-time": 0,
+								"wait-time": 0,
+								"fade-out-time": 1,
+								"destroy": true,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
+					"world": {
+						"x": 916,
+						"y": 244,
+						"width": 275,
+						"height": 420,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 185064454819571,
@@ -167,6 +369,16 @@
 				"depth": 1
 			},
 			"uid": 13,
+			"instanceVariables": {}
+		},
+		{
+			"type": "LastChosenEnemiesArray",
+			"properties": {
+				"width": 0,
+				"height": 2,
+				"depth": 1
+			},
+			"uid": 22,
 			"instanceVariables": {}
 		}
 	],

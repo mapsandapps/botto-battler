@@ -1,0 +1,44 @@
+{
+	"name": "EnemyContainer",
+	"plugin-id": "Sprite",
+	"sid": 916794669503941,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"sid": 426078209555694
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8506330,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 663729189032206,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

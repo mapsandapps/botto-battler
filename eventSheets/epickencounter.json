@@ -2,30 +2,76 @@
 	"name": "ePickEncounter",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "EnemyArraysCleared",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 692084591539048
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 234452631288170
+					"sid": 200865265438936
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
 					"text": "probably want to move this out to the town layout"
-				},
-				{
-					"id": "request-project-file",
-					"objectClass": "AJAX",
-					"sid": 610344218131807,
-					"parameters": {
-						"tag": "\"enemies\"",
-						"file": "enemies.json"
-					}
 				}
 			],
-			"sid": 818792257411679
+			"sid": 351281286189692,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-key",
+							"objectClass": "JSON",
+							"sid": 807469061180858,
+							"parameters": {
+								"path": "\"enemies\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 443345033236921,
+							"parameters": {
+								"tag": "\"enemies\"",
+								"file": "enemies.json"
+							}
+						}
+					],
+					"sid": 257435704431824
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 395643067778894
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PostAjaxFunction",
+							"sid": 294040892104431
+						}
+					],
+					"sid": 523385790391406
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -33,7 +79,7 @@
 				{
 					"id": "on-completed",
 					"objectClass": "AJAX",
-					"sid": 756140544690373,
+					"sid": 533912917794553,
 					"parameters": {
 						"tag": "\"enemies\""
 					}
@@ -43,7 +89,7 @@
 				{
 					"id": "set-json",
 					"objectClass": "JSON",
-					"sid": 316897815990706,
+					"sid": 657621207687702,
 					"parameters": {
 						"path": "\"enemies\"",
 						"json": "AJAX.LastData"
@@ -51,10 +97,156 @@
 				},
 				{
 					"callFunction": "SetUpEnemiesArray",
-					"sid": 932046847158061
+					"sid": 545991484473566
+				},
+				{
+					"callFunction": "PostAjaxFunction",
+					"sid": 152967566013431
 				}
 			],
-			"sid": 428250741430664
+			"sid": 740965243265694
+		},
+		{
+			"functionName": "PostAjaxFunction",
+			"functionDescription": "",
+			"functionCategory": "Pick Encounter",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 428400671250013,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 808945844204342,
+							"parameters": {
+								"variable": "WonLastBattle"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 763836550543560,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "sort",
+									"objectClass": "LastChosenEnemiesArray",
+									"sid": 356834010199760,
+									"parameters": {
+										"axis": "x"
+									}
+								},
+								{
+									"id": "reverse",
+									"objectClass": "LastChosenEnemiesArray",
+									"sid": 964909752639193,
+									"parameters": {
+										"axis": "x"
+									}
+								}
+							],
+							"sid": 221481118707112
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each-element",
+									"objectClass": "LastChosenEnemiesArray",
+									"sid": 752693557099821,
+									"parameters": {
+										"axes": "x"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "delete",
+									"objectClass": "EnemiesArray",
+									"sid": 611068282128676,
+									"parameters": {
+										"index": "LastChosenEnemiesArray.CurValue",
+										"axis": "x"
+									}
+								}
+							],
+							"sid": 835159586809073
+						},
+						{
+							"eventType": "comment",
+							"text": "We don't have enough enemies to show for selection, so reload deck for now (in future, back to town)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 557366669449970,
+									"parameters": {
+										"first-value": "EnemiesArray.Width",
+										"comparison": 2,
+										"second-value": "EnemyContainer.Count"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 740318545834694,
+									"parameters": {
+										"variable": "EnemyArraysCleared",
+										"value": "1"
+									}
+								},
+								{
+									"callFunction": "SetUpEnemiesArray",
+									"sid": 128357226067838
+								}
+							],
+							"sid": 479989084211131
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "DetermineEnemyChoices",
+									"sid": 786723049513449
+								}
+							],
+							"sid": 484114785736106
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 502137487550298
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "ReloadEnemyChoices",
+							"sid": 276963361559816
+						}
+					],
+					"sid": 100036001108271
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -64,14 +256,28 @@
 					"objectClass": "Touch",
 					"sid": 998543869372476,
 					"parameters": {
-						"object": "InvisibleButton"
+						"object": "Enemy"
 					}
 				}
 			],
 			"actions": [
 				{
-					"callFunction": "ChooseRandomEnemy",
-					"sid": 521478198849721
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 904032125106480,
+					"parameters": {
+						"variable": "CurrentEnemyName",
+						"value": "EnemyContainer.Name"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 598831102764453,
+					"parameters": {
+						"variable": "CurrentEnemyMaxHP",
+						"value": "Enemy.MaxHP"
+					}
 				},
 				{
 					"id": "go-to-layout",
@@ -85,7 +291,7 @@
 			"sid": 363490431279996
 		},
 		{
-			"functionName": "ChooseRandomEnemy",
+			"functionName": "ReloadEnemyChoices",
 			"functionDescription": "",
 			"functionCategory": "Pick Encounter",
 			"functionReturnType": "none",
@@ -94,17 +300,119 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 849952299636283,
+			"sid": 135876087241907,
 			"children": [
 				{
 					"eventType": "variable",
-					"name": "Index",
+					"name": "EnemyArrayIndex",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 638597982252202
+					"sid": 825658105709998
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-ordered",
+							"objectClass": "System",
+							"sid": 818197597188525,
+							"parameters": {
+								"object": "EnemyContainer",
+								"expression": "EnemyContainer.X",
+								"order": "ascending"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 270763124805075,
+							"parameters": {
+								"variable": "EnemyArrayIndex",
+								"value": "LastChosenEnemiesArray.At(loopindex)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyContainer",
+							"sid": 844668927006889,
+							"parameters": {
+								"instance-variable": "Name",
+								"value": "EnemiesArray.At(EnemyArrayIndex, 0)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 653698736738717,
+							"parameters": {
+								"instance-variable": "MaxHP",
+								"value": "EnemiesArray.At(EnemyArrayIndex,1)"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Enemy",
+							"sid": 785740871005084,
+							"parameters": {
+								"frame-number": "Functions.GetEnemyAnimationFrame(EnemyContainer.Name)"
+							}
+						}
+					],
+					"sid": 156624475077045
+				}
+			]
+		},
+		{
+			"functionName": "DetermineEnemyChoices",
+			"functionDescription": "",
+			"functionCategory": "Pick Encounter",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "LastChosenEnemiesArray",
+					"sid": 881277381554600,
+					"parameters": {
+						"width": "0",
+						"height": "2",
+						"depth": "1"
+					}
+				}
+			],
+			"sid": 150578236901216,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "EnemyArrayIndex",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 541955635723662
+				},
+				{
+					"eventType": "variable",
+					"name": "ExcRandomIndexes",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 490927589234477
+				},
+				{
+					"eventType": "comment",
+					"text": "EnemyContainer is just a nice way to provide some other instance variables next to our Enemy object (when you select either one, Construct automatically also selects the other), in this case the Name of the enemy (maybe a better way to do this, could just add Name to Enemy object but didn't want to do this until I understood Families better)"
 				},
 				{
 					"eventType": "block",
@@ -113,32 +421,77 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 901453007744481,
+							"sid": 968669803194556,
 							"parameters": {
-								"variable": "Index",
-								"value": "random(EnemiesArray.Width)"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 139899926659578,
-							"parameters": {
-								"variable": "CurrentEnemyName",
-								"value": "EnemiesArray.At(Index, 0)"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 763602369742883,
-							"parameters": {
-								"variable": "CurrentEnemyMaxHP",
-								"value": "EnemiesArray.At(Index, 1)"
+								"variable": "ExcRandomIndexes",
+								"value": "Functions.GetExclusiveRandomIndexes(0,EnemiesArray.Width, EnemyContainer.Count)"
 							}
 						}
 					],
-					"sid": 443051317022400
+					"sid": 887630385656869
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-ordered",
+							"objectClass": "System",
+							"sid": 851635480283148,
+							"parameters": {
+								"object": "EnemyContainer",
+								"expression": "EnemyContainer.X",
+								"order": "ascending"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 429800346243350,
+							"parameters": {
+								"variable": "EnemyArrayIndex",
+								"value": "tokenat(ExcRandomIndexes,loopindex,\",\")"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "EnemyContainer",
+							"sid": 961570677161457,
+							"parameters": {
+								"instance-variable": "Name",
+								"value": "EnemiesArray.At(EnemyArrayIndex, 0)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 168855413701515,
+							"parameters": {
+								"instance-variable": "MaxHP",
+								"value": "EnemiesArray.At(EnemyArrayIndex,1)"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Enemy",
+							"sid": 382814947472378,
+							"parameters": {
+								"frame-number": "Functions.GetEnemyAnimationFrame(EnemyContainer.Name)"
+							}
+						},
+						{
+							"id": "push",
+							"objectClass": "LastChosenEnemiesArray",
+							"sid": 697023289930523,
+							"parameters": {
+								"where": "back",
+								"value": "EnemyArrayIndex",
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 797556986995524
 				}
 			]
 		},
@@ -151,7 +504,18 @@
 			"functionParameters": [],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "EnemiesArray",
+					"sid": 963178354657475,
+					"parameters": {
+						"width": "0",
+						"height": "2",
+						"depth": "1"
+					}
+				}
+			],
 			"sid": 212393018169459,
 			"children": [
 				{
@@ -405,10 +769,10 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 385776077050538,
+							"sid": 174107200682512,
 							"parameters": {
 								"variable": "HP",
-								"value": "Functions.ParseDice(JSON.Get(\"enemies.\" & EnemyName & \".maxHPRoll\"))"
+								"value": "Functions.ParseDice(Functions.GetEnemyMaxHPRoll(EnemyName))"
 							}
 						},
 						{
@@ -433,6 +797,195 @@
 						}
 					],
 					"sid": 350355912486525
+				}
+			]
+		},
+		{
+			"functionName": "GetEnemyDamageRoll",
+			"functionDescription": "",
+			"functionCategory": "Enemy Info",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 988341777660204
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 872856031314889,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".damageRoll\")"
+					}
+				}
+			],
+			"sid": 354104725184138
+		},
+		{
+			"functionName": "GetEnemyMaxHPRoll",
+			"functionDescription": "",
+			"functionCategory": "Enemy Info",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 918263087737735
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 949039811725534,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".maxHPRoll\")"
+					}
+				}
+			],
+			"sid": 774049048371281
+		},
+		{
+			"functionName": "GetEnemyAnimationFrame",
+			"functionDescription": "",
+			"functionCategory": "Enemy Info",
+			"functionReturnType": "number",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 411395220729109
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 451948194864014,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".animationFrame\")"
+					}
+				}
+			],
+			"sid": 330652757158538
+		},
+		{
+			"functionName": "GetEnemyLevel",
+			"functionDescription": "",
+			"functionCategory": "Enemy Info",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 286997707250925
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 155879025276238,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".level\")"
+					}
+				}
+			],
+			"sid": 838548536423737
+		},
+		{
+			"eventType": "comment",
+			"text": "Gets amount random numbers in the range between minInclusive and maxExclusive without repeating and returns a comma separated string with the results"
+		},
+		{
+			"eventType": "comment",
+			"text": "Example: GetExclusiveRandomIndexes(3,9,4) = \"4,8,1,2,\""
+		},
+		{
+			"functionName": "GetExclusiveRandomIndexes",
+			"functionDescription": "",
+			"functionCategory": "Utility",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "minInclusive",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 853910010500688
+				},
+				{
+					"name": "maxExclusive",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 362666385815550
+				},
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 486820658574669
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 661341129978975,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "result",
+					"type": "string",
+					"initialValue": "\"\"",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 683838942480998
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "function randomInteger(minInc, maxExc) {\n  return Math.floor(Math.random() * (maxExc - minInc) + minInc)\n}\n\nlet result = \"\"\nlet choices = []\nfor (let i = localVars.minInclusive; i < localVars.maxExclusive; i++){\n  choices.push(i)\n}\n\nfor (let j = 0; j < localVars.amount; j++){\n  if (choices.length === 0){\n    break\n  }\n  let choice = randomInteger(0, choices.length)\n  result += `${choices[choice]},`\n  choices.splice(choice, 1)\n}\nlocalVars.result = result"
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 971408029911315,
+							"parameters": {
+								"value": "result"
+							}
+						}
+					],
+					"sid": 243029658016327
 				}
 			]
 		}

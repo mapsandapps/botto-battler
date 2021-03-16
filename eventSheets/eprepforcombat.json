@@ -13,8 +13,7 @@
 			"actions": [
 				{
 					"callFunction": "PrepEnemyForCombat",
-					"sid": 128242862876400,
-					"disabled": true
+					"sid": 128242862876400
 				}
 			],
 			"sid": 880498523030679
@@ -57,7 +56,7 @@
 				},
 				{
 					"callFunction": "UpdateStats",
-					"sid": 241094481818201
+					"sid": 987337195388801
 				}
 			],
 			"sid": 536386310319852
