@@ -415,13 +415,13 @@
 					"conditions": [],
 					"actions": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 968669803194556,
-							"parameters": {
-								"variable": "ExcRandomIndexes",
-								"value": "Functions.GetExclusiveRandomIndexes(0,EnemiesArray.Width, EnemyContainer.Count)"
-							}
+							"callFunction": "GetExclusiveRandomIndexes",
+							"sid": 599431155081648,
+							"parameters": [
+								"0",
+								"EnemiesArray.Width",
+								"EnemyContainer.Count"
+							]
 						}
 					],
 					"sid": 887630385656869
@@ -444,10 +444,10 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 429800346243350,
+							"sid": 619741016911162,
 							"parameters": {
 								"variable": "EnemyArrayIndex",
-								"value": "tokenat(ExcRandomIndexes,loopindex,\",\")"
+								"value": "ExcRandomIndexesArray.At(loopindex)"
 							}
 						},
 						{
@@ -793,195 +793,6 @@
 						}
 					],
 					"sid": 350355912486525
-				}
-			]
-		},
-		{
-			"functionName": "GetEnemyDamageRoll",
-			"functionDescription": "",
-			"functionCategory": "Enemy Info",
-			"functionReturnType": "string",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "EnemyName",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 988341777660204
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 872856031314889,
-					"parameters": {
-						"value": "JSON.Get(\"enemies.\" & EnemyName & \".damageRoll\")"
-					}
-				}
-			],
-			"sid": 354104725184138
-		},
-		{
-			"functionName": "GetEnemyMaxHPRoll",
-			"functionDescription": "",
-			"functionCategory": "Enemy Info",
-			"functionReturnType": "string",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "EnemyName",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 918263087737735
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 949039811725534,
-					"parameters": {
-						"value": "JSON.Get(\"enemies.\" & EnemyName & \".maxHPRoll\")"
-					}
-				}
-			],
-			"sid": 774049048371281
-		},
-		{
-			"functionName": "GetEnemyAnimationFrame",
-			"functionDescription": "",
-			"functionCategory": "Enemy Info",
-			"functionReturnType": "number",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "EnemyName",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 411395220729109
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 451948194864014,
-					"parameters": {
-						"value": "JSON.Get(\"enemies.\" & EnemyName & \".animationFrame\")"
-					}
-				}
-			],
-			"sid": 330652757158538
-		},
-		{
-			"functionName": "GetEnemyLevel",
-			"functionDescription": "",
-			"functionCategory": "Enemy Info",
-			"functionReturnType": "string",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "EnemyName",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 286997707250925
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 155879025276238,
-					"parameters": {
-						"value": "JSON.Get(\"enemies.\" & EnemyName & \".level\")"
-					}
-				}
-			],
-			"sid": 838548536423737
-		},
-		{
-			"eventType": "comment",
-			"text": "Gets amount random numbers in the range between minInclusive and maxExclusive without repeating and returns a comma separated string with the results"
-		},
-		{
-			"eventType": "comment",
-			"text": "Example: GetExclusiveRandomIndexes(3,9,4) = \"4,8,1,2,\""
-		},
-		{
-			"functionName": "GetExclusiveRandomIndexes",
-			"functionDescription": "",
-			"functionCategory": "Utility",
-			"functionReturnType": "string",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "minInclusive",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"sid": 853910010500688
-				},
-				{
-					"name": "maxExclusive",
-					"type": "number",
-					"initialValue": "1",
-					"comment": "",
-					"sid": 362666385815550
-				},
-				{
-					"name": "amount",
-					"type": "number",
-					"initialValue": "1",
-					"comment": "",
-					"sid": 486820658574669
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 661341129978975,
-			"children": [
-				{
-					"eventType": "variable",
-					"name": "result",
-					"type": "string",
-					"initialValue": "\"\"",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 683838942480998
-				},
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "script",
-							"script": "function randomInteger(minInc, maxExc) {\n  return Math.floor(Math.random() * (maxExc - minInc) + minInc)\n}\n\nlet result = \"\"\nlet choices = []\nfor (let i = localVars.minInclusive; i < localVars.maxExclusive; i++){\n  choices.push(i)\n}\n\nfor (let j = 0; j < localVars.amount; j++){\n  if (choices.length === 0){\n    break\n  }\n  let choice = randomInteger(0, choices.length)\n  result += `${choices[choice]},`\n  choices.splice(choice, 1)\n}\nlocalVars.result = result"
-						},
-						{
-							"id": "set-function-return-value",
-							"objectClass": "Functions",
-							"sid": 971408029911315,
-							"parameters": {
-								"value": "result"
-							}
-						}
-					],
-					"sid": 243029658016327
 				}
 			]
 		}

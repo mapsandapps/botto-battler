@@ -48,6 +48,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -58,14 +66,6 @@
 			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
-			"author": "Scirra",
-			"version": "r234.4",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
-			"id": "Arr",
-			"name": "Array",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
@@ -102,6 +102,13 @@
 				],
 				"subfolders": [],
 				"name": "Base"
+			},
+			{
+				"items": [
+					"ExcRandomIndexesArray"
+				],
+				"subfolders": [],
+				"name": "Helper Arrays"
 			}
 		]
 	},
@@ -134,7 +141,8 @@
 			"eRolls",
 			"eCombatHelpers",
 			"ePrepForCombat",
-			"ePickEncounter"
+			"ePickEncounter",
+			"eHelpers"
 		],
 		"subfolders": []
 	},

@@ -1,0 +1,248 @@
+{
+	"name": "eHelpers",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Gets amount random numbers in the range between minInclusive and maxExclusive without repeating and puts the results in ExcRandomIndexesArray"
+		},
+		{
+			"eventType": "comment",
+			"text": "Example: GetExclusiveRandomIndexes(3,9,4) fills ExcRandomIndexesArray with 4,8,1,2"
+		},
+		{
+			"functionName": "GetExclusiveRandomIndexes",
+			"functionDescription": "",
+			"functionCategory": "Helpers",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "MinInclusive",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 420143092187395
+				},
+				{
+					"name": "MaxExclusive",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 384075952015226
+				},
+				{
+					"name": "Amount",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 895549607265765
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "ExcRandomIndexesArray",
+					"sid": 119603766465013,
+					"parameters": {
+						"width": "0",
+						"height": "1",
+						"depth": "1"
+					}
+				}
+			],
+			"sid": 457757218751685,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "RandomNumber",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 728723288637462
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "while",
+							"objectClass": "System",
+							"sid": 334999393404096
+						},
+						{
+							"id": "compare-size",
+							"objectClass": "ExcRandomIndexesArray",
+							"sid": 823138081908562,
+							"parameters": {
+								"axis": "x",
+								"comparison": 2,
+								"value": "amount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 531245607898327,
+							"parameters": {
+								"variable": "RandomNumber",
+								"value": "floor(random(MaxExclusive - MinInclusive)) + MinInclusive"
+							}
+						}
+					],
+					"sid": 341360134663623,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "contains-value",
+									"objectClass": "ExcRandomIndexesArray",
+									"sid": 154432124364327,
+									"parameters": {
+										"value": "RandomNumber"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "push",
+									"objectClass": "ExcRandomIndexesArray",
+									"sid": 829085879793504,
+									"parameters": {
+										"where": "back",
+										"value": "RandomNumber",
+										"axis": "x"
+									}
+								}
+							],
+							"sid": 762443781265394
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "GetEnemyDamageRoll",
+			"functionDescription": "",
+			"functionCategory": "Helpers",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 988341777660204
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 872856031314889,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".damageRoll\")"
+					}
+				}
+			],
+			"sid": 354104725184138
+		},
+		{
+			"functionName": "GetEnemyMaxHPRoll",
+			"functionDescription": "",
+			"functionCategory": "Helpers",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 918263087737735
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 949039811725534,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".maxHPRoll\")"
+					}
+				}
+			],
+			"sid": 774049048371281
+		},
+		{
+			"functionName": "GetEnemyAnimationFrame",
+			"functionDescription": "",
+			"functionCategory": "Helpers",
+			"functionReturnType": "number",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 411395220729109
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 451948194864014,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".animationFrame\")"
+					}
+				}
+			],
+			"sid": 330652757158538
+		},
+		{
+			"functionName": "GetEnemyLevel",
+			"functionDescription": "",
+			"functionCategory": "Helpers",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 286997707250925
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 155879025276238,
+					"parameters": {
+						"value": "JSON.Get(\"enemies.\" & EnemyName & \".level\")"
+					}
+				}
+			],
+			"sid": 838548536423737
+		}
+	],
+	"sid": 438012762763126
+}

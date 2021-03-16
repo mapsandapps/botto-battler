@@ -384,6 +384,16 @@
 			},
 			"uid": 22,
 			"instanceVariables": {}
+		},
+		{
+			"type": "ExcRandomIndexesArray",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 7,
+			"instanceVariables": {}
 		}
 	],
 	"effectTypes": [],
