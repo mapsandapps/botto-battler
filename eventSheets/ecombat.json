@@ -22,8 +22,567 @@
 			"sid": 535267054312414
 		},
 		{
+			"eventType": "variable",
+			"name": "IsInCombat",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 519580816206404
+		},
+		{
+			"eventType": "comment",
+			"text": "RoundNumber is just used for debugging, for now"
+		},
+		{
+			"eventType": "variable",
+			"name": "RoundNumber",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 396045900245868
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "ePrepForCombat"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 546376745265011
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "UpdateStats",
+					"sid": 294345513537831
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 718913208097477,
+					"parameters": {
+						"seconds": "1.0"
+					}
+				},
+				{
+					"callFunction": "BeginRound",
+					"sid": 355910627818959
+				}
+			],
+			"sid": 250889264006691
+		},
+		{
+			"functionName": "BeginRound",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 628463798406849,
+					"parameters": {
+						"type": "log",
+						"message": "\"begin round\""
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 111094809640430,
+					"parameters": {
+						"variable": "RoundNumber",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 492552938550075,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Character",
+							"sid": 753714461097926,
+							"parameters": {
+								"instance-variable": "HasTakenTurn",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 511885541566565
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "TakeNextCharacterTurn",
+							"sid": 955095357800387
+						}
+					],
+					"sid": 499329817129258
+				}
+			]
+		},
+		{
+			"functionName": "TakeNextCharacterTurn",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 772570408625157,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Character",
+							"sid": 831927751715144,
+							"parameters": {
+								"instance-variable": "HasTakenTurn"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "pick-highestlowest",
+							"objectClass": "Character",
+							"sid": 819374362524788,
+							"parameters": {
+								"which": "highest",
+								"instance-variable": "Initiative"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PickDefender",
+							"sid": 896214297348656,
+							"parameters": [
+								"Character.UID"
+							]
+						}
+					],
+					"sid": 105138295233781
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 441604864897212
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "BeginRound",
+							"sid": 743610834805751
+						}
+					],
+					"sid": 970761221034716
+				}
+			]
+		},
+		{
+			"functionName": "PickDefender",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "AttackerUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 891286461314159
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Character",
+					"sid": 538906339187151,
+					"parameters": {
+						"unique-id": "AttackerUID"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 602304516240475,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "DefenderUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 932199542806040
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 302792051700462,
+							"parameters": {
+								"first-value": "Character.ObjectTypeName",
+								"comparison": 0,
+								"second-value": "\"Botto\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "do wear to attacker"
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 771820053937301,
+							"parameters": {
+								"variable": "DefenderUID",
+								"value": "Enemy.UID"
+							}
+						},
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Botto",
+							"sid": 327735628647242,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "Wear",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 554672837056898
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 714887388481248
+						},
+						{
+							"id": "pick-random-instance",
+							"objectClass": "System",
+							"sid": 165386495922486,
+							"parameters": {
+								"object": "Botto"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 481439268228289,
+							"parameters": {
+								"variable": "DefenderUID",
+								"value": "Botto.UID"
+							}
+						}
+					],
+					"sid": 893162159846657
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "Attack",
+							"sid": 864013335575980,
+							"parameters": [
+								"Functions.ParseDice(Character.DamageRoll)",
+								"DefenderUID"
+							]
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Character",
+							"sid": 905251380530752,
+							"parameters": {
+								"instance-variable": "HasTakenTurn",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 962153883152042
+				}
+			]
+		},
+		{
+			"functionName": "Attack",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Damage",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 719330111105024
+				},
+				{
+					"name": "DefenderUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 967062905302301
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Character",
+					"sid": 198997715355502,
+					"parameters": {
+						"unique-id": "DefenderUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Character",
+					"sid": 675935454524882,
+					"parameters": {
+						"instance-variable": "HP",
+						"value": "Damage"
+					}
+				},
+				{
+					"callFunction": "UpdateStats",
+					"sid": 630061303723338
+				},
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Botto",
+					"sid": 340736273825012,
+					"disabled": true,
+					"parameters": {
+						"instance-variable": "Wear",
+						"value": "1"
+					}
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 791270309857265,
+					"parameters": {
+						"type": "log",
+						"message": "\"attack\""
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 998587094059611,
+					"parameters": {
+						"seconds": "1.0"
+					}
+				}
+			],
+			"sid": 747569620669030,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Character",
+							"sid": 629751842238662,
+							"parameters": {
+								"instance-variable": "HP",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "CharacterDied",
+							"sid": 147232574245502,
+							"parameters": [
+								"Character.UID"
+							]
+						}
+					],
+					"sid": 477002112443366
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 575767847670861
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "TakeNextCharacterTurn",
+							"sid": 504788384369643
+						}
+					],
+					"sid": 498671385479845
+				}
+			]
+		},
+		{
+			"functionName": "CharacterDied",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "CharacterUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 382094539776130
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Character",
+					"sid": 741657549152581,
+					"parameters": {
+						"unique-id": "CharacterUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "start-fade",
+					"objectClass": "Character",
+					"sid": 381164558289799,
+					"behaviorType": "Fade"
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 455216440919159,
+					"parameters": {
+						"seconds": "1.0"
+					}
+				}
+			],
+			"sid": 170036108368698,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 387126753950436,
+							"parameters": {
+								"first-value": "Botto.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 173951587637005,
+							"parameters": {
+								"first-value": "Enemy.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "EndBattle",
+							"sid": 540057054006672
+						}
+					],
+					"sid": 473882243018718,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 958637424422319
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "TakeNextCharacterTurn",
+							"sid": 915620587406864
+						}
+					],
+					"sid": 280469717763028
+				}
+			]
+		},
+		{
+			"functionName": "EndBattle",
+			"functionDescription": "",
+			"functionCategory": "Combat",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 808036582633539,
+					"parameters": {
+						"seconds": "1.0"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 247632162671460,
+					"parameters": {
+						"layout": "Pick Encounter"
+					}
+				}
+			],
+			"sid": 542314571689557
 		}
 	],
 	"sid": 953452279108370

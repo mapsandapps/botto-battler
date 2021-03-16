@@ -5,6 +5,12 @@
 	"isGlobal": false,
 	"instanceVariables": [
 		{
+			"name": "Index",
+			"type": "number",
+			"desc": "",
+			"sid": 247127184471682
+		},
+		{
 			"name": "Wear",
 			"type": "number",
 			"desc": "",

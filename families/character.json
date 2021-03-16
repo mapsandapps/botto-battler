@@ -4,6 +4,18 @@
 	"sid": 348727103121005,
 	"instanceVariables": [
 		{
+			"name": "DamageRoll",
+			"type": "string",
+			"desc": "",
+			"sid": 380832247413246
+		},
+		{
+			"name": "Initiative",
+			"type": "number",
+			"desc": "",
+			"sid": 922999331805660
+		},
+		{
 			"name": "HP",
 			"type": "number",
 			"desc": "",
@@ -14,9 +26,21 @@
 			"type": "number",
 			"desc": "",
 			"sid": 223409282481430
+		},
+		{
+			"name": "HasTakenTurn",
+			"type": "boolean",
+			"desc": "",
+			"sid": 296968623015547
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 546375442883193
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"Enemy",

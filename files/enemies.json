@@ -1,59 +1,69 @@
 {
   "Bot": {
+    "damageRoll": "2d6+2",
     "maxHPRoll": "3d10+12",
     "name": "Bot",
     "animationFrame": 0,
     "level": 1
   },
   "Eyes": {
+    "damageRoll": "2d6+2",
     "maxHPRoll": "3d10+12",
     "name": "Eyes",
     "animationFrame": 1,
     "level": 1
   },
   "Jelly": {
+    "damageRoll": "2d6+2",
     "maxHPRoll": "3d10+12",
     "name": "Jelly",
     "animationFrame": 2,
     "level": 1
   },
   "Mini-Bot": {
+    "damageRoll": "2d6+2",
     "maxHPRoll": "3d10+12",
     "name": "Mini-Bot",
     "animationFrame": 3,
     "level": 1
   },
   "One-Eye": {
+    "damageRoll": "3d6+4",
     "maxHPRoll": "4d10+18",
     "name": "One-Eye",
     "animationFrame": 4,
     "level": 2
   },
   "Peeper": {
+    "damageRoll": "3d6+4",
     "maxHPRoll": "4d10+18",
     "name": "Peeper",
     "animationFrame": 5,
     "level": 2
   },
   "Slither": {
+    "damageRoll": "3d6+4",
     "maxHPRoll": "4d10+18",
     "name": "Slither",
     "animationFrame": 6,
     "level": 2
   },
   "Spikey": {
+    "damageRoll": "4d6+6",
     "maxHPRoll": "6d10+16",
     "name": "Spikey",
     "animationFrame": 7,
     "level": 3
   },
   "Scratchy": {
+    "damageRoll": "4d6+6",
     "maxHPRoll": "6d10+16",
     "name": "Scratchy",
     "animationFrame": 8,
     "level": 3
   },
   "Intimidator": {
+    "damageRoll": "5d6+8",
     "maxHPRoll": "0d10+60",
     "name": "Intimidator",
     "animationFrame": 9,

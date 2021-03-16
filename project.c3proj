@@ -40,6 +40,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -61,6 +69,14 @@
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
 		}
 	],
 	"uniqueId": "hw4jzq04umi",
@@ -79,7 +95,8 @@
 					"Touch",
 					"JSON",
 					"AJAX",
-					"Browser"
+					"Browser",
+					"Audio"
 				],
 				"subfolders": [],
 				"name": "Base"

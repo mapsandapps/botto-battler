@@ -5,6 +5,12 @@
 	"isGlobal": false,
 	"instanceVariables": [
 		{
+			"name": "BotIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 119168352161570
+		},
+		{
 			"name": "Character",
 			"type": "string",
 			"desc": "",
