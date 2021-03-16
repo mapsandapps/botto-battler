@@ -253,13 +253,17 @@
 								"comparison": 0,
 								"second-value": "\"Botto\""
 							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Botto",
+							"sid": 144469380938674,
+							"parameters": {
+								"unique-id": "AttackerUID"
+							}
 						}
 					],
 					"actions": [
-						{
-							"type": "comment",
-							"text": "do wear to attacker"
-						},
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
@@ -273,11 +277,14 @@
 							"id": "add-to-instvar",
 							"objectClass": "Botto",
 							"sid": 327735628647242,
-							"disabled": true,
 							"parameters": {
 								"instance-variable": "Wear",
 								"value": "1"
 							}
+						},
+						{
+							"callFunction": "UpdateStats",
+							"sid": 675469435568827
 						}
 					],
 					"sid": 554672837056898
@@ -382,20 +389,6 @@
 					}
 				},
 				{
-					"callFunction": "UpdateStats",
-					"sid": 630061303723338
-				},
-				{
-					"id": "add-to-instvar",
-					"objectClass": "Botto",
-					"sid": 340736273825012,
-					"disabled": true,
-					"parameters": {
-						"instance-variable": "Wear",
-						"value": "1"
-					}
-				},
-				{
 					"id": "log",
 					"objectClass": "Browser",
 					"sid": 791270309857265,
@@ -403,18 +396,41 @@
 						"type": "log",
 						"message": "\"attack\""
 					}
-				},
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 998587094059611,
-					"parameters": {
-						"seconds": "1.0"
-					}
 				}
 			],
 			"sid": 747569620669030,
 			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 742274771591517,
+							"parameters": {
+								"first-value": "Character.ObjectTypeName",
+								"comparison": 0,
+								"second-value": "\"Botto\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Botto",
+							"sid": 140122345491210,
+							"parameters": {
+								"instance-variable": "Wear",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "UpdateStats",
+							"sid": 644479306564991
+						}
+					],
+					"sid": 518032937142710
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -450,6 +466,14 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 528867791613034,
+							"parameters": {
+								"seconds": "1.0"
+							}
+						},
 						{
 							"callFunction": "TakeNextCharacterTurn",
 							"sid": 504788384369643
