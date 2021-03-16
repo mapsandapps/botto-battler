@@ -32,6 +32,12 @@
 			"type": "boolean",
 			"desc": "",
 			"sid": 296968623015547
+		},
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"sid": 812227515215932
 		}
 	],
 	"behaviorTypes": [

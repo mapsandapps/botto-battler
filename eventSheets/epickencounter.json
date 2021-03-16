@@ -264,10 +264,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 904032125106480,
+					"sid": 246031136249538,
 					"parameters": {
 						"variable": "CurrentEnemyName",
-						"value": "EnemyContainer.Name"
+						"value": "Enemy.Name"
 					}
 				},
 				{
@@ -338,17 +338,17 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "EnemyContainer",
-							"sid": 844668927006889,
+							"objectClass": "Enemy",
+							"sid": 990748513367984,
 							"parameters": {
 								"instance-variable": "Name",
-								"value": "EnemiesArray.At(EnemyArrayIndex, 0)"
+								"value": "EnemiesArray.At(EnemyArrayIndex,0)"
 							}
 						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 653698736738717,
+							"sid": 169764410665118,
 							"parameters": {
 								"instance-variable": "MaxHP",
 								"value": "EnemiesArray.At(EnemyArrayIndex,1)"
@@ -357,9 +357,9 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Enemy",
-							"sid": 785740871005084,
+							"sid": 260128848354989,
 							"parameters": {
-								"frame-number": "Functions.GetEnemyAnimationFrame(EnemyContainer.Name)"
+								"frame-number": "Functions.GetEnemyAnimationFrame(Enemy.Name)"
 							}
 						}
 					],
@@ -380,11 +380,11 @@
 				{
 					"id": "set-size",
 					"objectClass": "LastChosenEnemiesArray",
-					"sid": 881277381554600,
+					"sid": 833627656871610,
 					"parameters": {
 						"width": "0",
-						"height": "2",
-						"depth": "1"
+						"height": "LastChosenEnemiesArray.Height",
+						"depth": "LastChosenEnemiesArray.Depth"
 					}
 				}
 			],
@@ -409,10 +409,6 @@
 					"isStatic": false,
 					"isConstant": false,
 					"sid": 490927589234477
-				},
-				{
-					"eventType": "comment",
-					"text": "EnemyContainer is just a nice way to provide some other instance variables next to our Enemy object (when you select either one, Construct automatically also selects the other), in this case the Name of the enemy (maybe a better way to do this, could just add Name to Enemy object but didn't want to do this until I understood Families better)"
 				},
 				{
 					"eventType": "block",
@@ -456,11 +452,11 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "EnemyContainer",
-							"sid": 961570677161457,
+							"objectClass": "Enemy",
+							"sid": 184813377451472,
 							"parameters": {
 								"instance-variable": "Name",
-								"value": "EnemiesArray.At(EnemyArrayIndex, 0)"
+								"value": "EnemiesArray.At(EnemyArrayIndex,0)"
 							}
 						},
 						{
@@ -475,9 +471,9 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Enemy",
-							"sid": 382814947472378,
+							"sid": 102906347955650,
 							"parameters": {
-								"frame-number": "Functions.GetEnemyAnimationFrame(EnemyContainer.Name)"
+								"frame-number": "Functions.GetEnemyAnimationFrame(Enemy.Name)"
 							}
 						},
 						{
@@ -508,11 +504,11 @@
 				{
 					"id": "set-size",
 					"objectClass": "EnemiesArray",
-					"sid": 963178354657475,
+					"sid": 119408997259113,
 					"parameters": {
 						"width": "0",
-						"height": "2",
-						"depth": "1"
+						"height": "EnemiesArray.Height",
+						"depth": "EnemiesArray.Depth"
 					}
 				}
 			],

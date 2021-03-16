@@ -63,6 +63,7 @@
 						"HP": 0,
 						"MaxHP": 0,
 						"HasTakenTurn": false,
+						"Name": "",
 						"Index": 0,
 						"Wear": 0,
 						"MaxWear": 0
@@ -111,8 +112,8 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 219,
-						"y": 251,
+						"x": 256,
+						"y": 256,
 						"width": 250,
 						"height": 250,
 						"originX": 0.5,
@@ -142,8 +143,8 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 583,
-						"y": 247,
+						"x": 640,
+						"y": 256,
 						"width": 250,
 						"height": 250,
 						"originX": 0.5,
@@ -173,8 +174,8 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 920,
-						"y": 250,
+						"x": 1024,
+						"y": 256,
 						"width": 250,
 						"height": 250,
 						"originX": 0.5,
@@ -193,7 +194,7 @@
 					"type": "Enemy",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Full",
+						"initial-animation": "Portrait",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -204,7 +205,8 @@
 						"Initiative": 50,
 						"HP": 36,
 						"MaxHP": 36,
-						"HasTakenTurn": false
+						"HasTakenTurn": false,
+						"Name": ""
 					},
 					"behaviors": {
 						"Fade": {
@@ -219,10 +221,10 @@
 						}
 					},
 					"world": {
-						"x": 221,
-						"y": 242,
-						"width": 275,
-						"height": 420,
+						"x": 256,
+						"y": 256,
+						"width": 144,
+						"height": 144,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -239,7 +241,7 @@
 					"type": "Enemy",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Full",
+						"initial-animation": "Portrait",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -250,7 +252,8 @@
 						"Initiative": 50,
 						"HP": 36,
 						"MaxHP": 36,
-						"HasTakenTurn": false
+						"HasTakenTurn": false,
+						"Name": ""
 					},
 					"behaviors": {
 						"Fade": {
@@ -265,10 +268,10 @@
 						}
 					},
 					"world": {
-						"x": 583,
-						"y": 240,
-						"width": 275,
-						"height": 420,
+						"x": 640,
+						"y": 256,
+						"width": 144,
+						"height": 144,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -285,7 +288,7 @@
 					"type": "Enemy",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Full",
+						"initial-animation": "Portrait",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -296,7 +299,8 @@
 						"Initiative": 50,
 						"HP": 36,
 						"MaxHP": 36,
-						"HasTakenTurn": false
+						"HasTakenTurn": false,
+						"Name": ""
 					},
 					"behaviors": {
 						"Fade": {
@@ -311,10 +315,10 @@
 						}
 					},
 					"world": {
-						"x": 916,
-						"y": 244,
-						"width": 275,
-						"height": 420,
+						"x": 1024,
+						"y": 256,
+						"width": 144,
+						"height": 144,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
