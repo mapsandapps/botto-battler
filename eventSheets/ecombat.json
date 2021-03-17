@@ -290,6 +290,22 @@
 						{
 							"callFunction": "UpdateStats",
 							"sid": 675469435568827
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Botto",
+							"sid": 652258208235848,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetX",
+								"end-value": "Botto.X + 16",
+								"time": "0.1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes"
+							}
 						}
 					],
 					"sid": 554672837056898
@@ -319,6 +335,22 @@
 							"parameters": {
 								"variable": "DefenderUID",
 								"value": "Botto.UID"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Enemy",
+							"sid": 732318664265189,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetX",
+								"end-value": "Enemy.X - 16",
+								"time": "0.1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes"
 							}
 						}
 					],
@@ -412,6 +444,14 @@
 								"comparison": 0,
 								"second-value": "\"Botto\""
 							}
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Botto",
+							"sid": 304988616909748,
+							"parameters": {
+								"unique-id": "Character.UID"
+							}
 						}
 					],
 					"actions": [
@@ -427,9 +467,44 @@
 						{
 							"callFunction": "UpdateStats",
 							"sid": 644479306564991
+						},
+						{
+							"id": "flash",
+							"objectClass": "Botto",
+							"sid": 554956079493438,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "0.3"
+							}
 						}
 					],
 					"sid": 518032937142710
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 443060218064323
+						}
+					],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Enemy",
+							"sid": 151098316220744,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "0.3"
+							}
+						}
+					],
+					"sid": 160145158511815
 				},
 				{
 					"eventType": "block",

@@ -33,6 +33,14 @@
 								"enabled": false,
 								"live-preview": false
 							}
+						},
+						"Flash": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
 						}
 					},
 					"world": {

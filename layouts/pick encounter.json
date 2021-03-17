@@ -199,6 +199,14 @@
 								"enabled": false,
 								"live-preview": false
 							}
+						},
+						"Flash": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
 						}
 					},
 					"world": {
@@ -246,6 +254,14 @@
 								"enabled": false,
 								"live-preview": false
 							}
+						},
+						"Flash": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
 						}
 					},
 					"world": {
@@ -292,6 +308,14 @@
 								"destroy": true,
 								"enabled": false,
 								"live-preview": false
+							}
+						},
+						"Flash": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
 							}
 						}
 					},
