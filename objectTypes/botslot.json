@@ -1,0 +1,67 @@
+{
+	"name": "BotSlot",
+	"plugin-id": "Sprite",
+	"sid": 303970832089399,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "Slot",
+			"type": "number",
+			"desc": "",
+			"sid": 282739729864595
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6551750,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 345749697455114,
+				"name": "Not Selected",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6804805,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 903527817337292,
+				"name": "Selected",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

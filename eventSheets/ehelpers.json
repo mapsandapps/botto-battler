@@ -10,7 +10,7 @@
 			"text": "Example: GetExclusiveRandomIndexes(3,9,4) fills ExcRandomIndexesArray with 4,8,1,2"
 		},
 		{
-			"functionName": "GetExclusiveRandomIndexes",
+			"functionName": "GetExclusiveRandomNumbers",
 			"functionDescription": "",
 			"functionCategory": "Helpers",
 			"functionReturnType": "none",
@@ -43,7 +43,7 @@
 			"actions": [
 				{
 					"id": "set-size",
-					"objectClass": "ExcRandomIndexesArray",
+					"objectClass": "ExcRandomNumbersArray",
 					"sid": 119603766465013,
 					"parameters": {
 						"width": "0",
@@ -74,7 +74,7 @@
 						},
 						{
 							"id": "compare-size",
-							"objectClass": "ExcRandomIndexesArray",
+							"objectClass": "ExcRandomNumbersArray",
 							"sid": 823138081908562,
 							"parameters": {
 								"axis": "x",
@@ -101,7 +101,7 @@
 							"conditions": [
 								{
 									"id": "contains-value",
-									"objectClass": "ExcRandomIndexesArray",
+									"objectClass": "ExcRandomNumbersArray",
 									"sid": 154432124364327,
 									"parameters": {
 										"value": "RandomNumber"
@@ -112,7 +112,7 @@
 							"actions": [
 								{
 									"id": "push",
-									"objectClass": "ExcRandomIndexesArray",
+									"objectClass": "ExcRandomNumbersArray",
 									"sid": 829085879793504,
 									"parameters": {
 										"where": "back",

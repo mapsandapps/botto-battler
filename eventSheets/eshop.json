@@ -1,0 +1,168 @@
+{
+	"name": "eShop",
+	"events": [
+		{
+			"functionName": "SetInitialOwnedBots",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "push",
+					"objectClass": "OwnedBotsArray",
+					"sid": 729479161054678,
+					"parameters": {
+						"where": "back",
+						"value": "0",
+						"axis": "x"
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 382732588097395,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "1",
+						"value": "Functions.ParseDice(\"3d10+12\")"
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 978916861003362,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "2",
+						"value": "OwnedBotsArray.At(OwnedBotsArray.Width - 1, 1)"
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 483751722425573,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "3",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 176436414644422,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "4",
+						"value": "20"
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 234602933864782,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "5",
+						"value": "\"3d6+4\""
+					}
+				},
+				{
+					"id": "set-at-xy",
+					"objectClass": "OwnedBotsArray",
+					"sid": 145278677699260,
+					"parameters": {
+						"x": "OwnedBotsArray.Width - 1",
+						"y": "6",
+						"value": "80"
+					}
+				}
+			],
+			"sid": 122089230781413,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "push",
+							"objectClass": "OwnedBotsArray",
+							"sid": 832389704053371,
+							"parameters": {
+								"where": "back",
+								"value": "1",
+								"axis": "x"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 625447039621552,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "1",
+								"value": "Functions.ParseDice(\"3d10+12\")"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 380394901650695,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "2",
+								"value": "OwnedBotsArray.At(OwnedBotsArray.Width - 1, 1)"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 535352329567229,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "3",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 290414392641016,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "4",
+								"value": "20"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 756965432556330,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "5",
+								"value": "\"3d6+4\""
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "OwnedBotsArray",
+							"sid": 597306653154475,
+							"parameters": {
+								"x": "OwnedBotsArray.Width - 1",
+								"y": "6",
+								"value": "20"
+							}
+						}
+					],
+					"sid": 906871419617911
+				}
+			]
+		}
+	],
+	"sid": 689235514017852
+}

@@ -74,8 +74,8 @@
 			],
 			"actions": [
 				{
-					"callFunction": "UpdateStats",
-					"sid": 294345513537831
+					"callFunction": "PlaceBots",
+					"sid": 250074229692301
 				},
 				{
 					"id": "wait",
@@ -385,12 +385,12 @@
 			],
 			"actions": [
 				{
-					"id": "subtract-from-instvar",
+					"id": "set-instvar-value",
 					"objectClass": "Character",
-					"sid": 675935454524882,
+					"sid": 308316909550418,
 					"parameters": {
 						"instance-variable": "HP",
-						"value": "Damage"
+						"value": "max(Character.HP - Damage, 0)"
 					}
 				},
 				{

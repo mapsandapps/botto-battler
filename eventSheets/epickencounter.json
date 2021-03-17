@@ -2,6 +2,10 @@
 	"name": "ePickEncounter",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "eMouse"
+		},
+		{
 			"eventType": "variable",
 			"name": "EnemyArraysCleared",
 			"type": "number",
@@ -70,6 +74,39 @@
 						}
 					],
 					"sid": 523385790391406
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-size",
+							"objectClass": "OwnedBotsArray",
+							"sid": 249210493607656,
+							"parameters": {
+								"axis": "x",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "SetInitialOwnedBots",
+							"sid": 245713237699634
+						}
+					],
+					"sid": 699647697557129
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "ShowOwnedBots",
+							"sid": 113497029609685
+						}
+					],
+					"sid": 634572866823522
 				}
 			]
 		},
@@ -415,7 +452,7 @@
 					"conditions": [],
 					"actions": [
 						{
-							"callFunction": "GetExclusiveRandomIndexes",
+							"callFunction": "GetExclusiveRandomNumbers",
 							"sid": 599431155081648,
 							"parameters": [
 								"0",
@@ -447,7 +484,7 @@
 							"sid": 619741016911162,
 							"parameters": {
 								"variable": "EnemyArrayIndex",
-								"value": "ExcRandomIndexesArray.At(loopindex)"
+								"value": "ExcRandomNumbersArray.At(loopindex)"
 							}
 						},
 						{
@@ -793,6 +830,258 @@
 						}
 					],
 					"sid": 350355912486525
+				}
+			]
+		},
+		{
+			"functionName": "ShowOwnedBots",
+			"functionDescription": "",
+			"functionCategory": "Pick Encounter",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 196216641190340,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-element",
+							"objectClass": "OwnedBotsArray",
+							"sid": 794917172304658,
+							"parameters": {
+								"axes": "x"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "BotSlot",
+							"sid": 450755148136667,
+							"parameters": {
+								"instance-variable": "Slot",
+								"comparison": 0,
+								"value": "OwnedBotsArray.CurX"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 436939507628194,
+							"parameters": {
+								"object-to-create": "Botto",
+								"layer": "\"Layer 0\"",
+								"x": "BotSlot.X",
+								"y": "BotSlot.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "Botto",
+							"sid": 200759597282737,
+							"parameters": {
+								"width": "Botto.Width * 0.64",
+								"height": "Botto.Height * 0.64"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Botto",
+							"sid": 674601550800578,
+							"parameters": {
+								"frame-number": "OwnedBotsArray.At(OwnedBotsArray.CurX, 0)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 535443015693029,
+							"parameters": {
+								"instance-variable": "HP",
+								"value": "OwnedBotsArray.At(OwnedBotsArray.CurX, 1)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 439991696000626,
+							"parameters": {
+								"instance-variable": "MaxHP",
+								"value": "OwnedBotsArray.At(OwnedBotsArray.CurX, 2)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 323216677486817,
+							"parameters": {
+								"instance-variable": "Wear",
+								"value": "OwnedBotsArray.At(OwnedBotsArray.CurX, 3)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 840764115568252,
+							"parameters": {
+								"instance-variable": "MaxWear",
+								"value": "OwnedBotsArray.At(OwnedBotsArray.CurX, 4)"
+							}
+						}
+					],
+					"sid": 581300363838693
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 701566487719880,
+					"parameters": {
+						"object": "BotSlot"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 239357018624685,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "BotSlot",
+							"sid": 755753354456344,
+							"parameters": {
+								"animation": "\"Selected\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "BotSlot",
+							"sid": 270581727704118,
+							"parameters": {
+								"animation": "\"Not Selected\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"callFunction": "SetSelectedBots",
+							"sid": 364649160594150
+						}
+					],
+					"sid": 936331407995635
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 415835929353371
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "BotSlot",
+							"sid": 425793475840513,
+							"parameters": {
+								"object": "Botto"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "BotSlot",
+							"sid": 574844807976011,
+							"parameters": {
+								"animation": "\"Selected\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"callFunction": "SetSelectedBots",
+							"sid": 933912129052283
+						}
+					],
+					"sid": 211878638193261
+				}
+			]
+		},
+		{
+			"functionName": "SetSelectedBots",
+			"functionDescription": "",
+			"functionCategory": "Pick Encounter",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "SelectedBotsArray",
+					"sid": 189738407162222,
+					"parameters": {
+						"width": "0",
+						"height": "SelectedBotsArray.Height",
+						"depth": "SelectedBotsArray.Depth"
+					}
+				}
+			],
+			"sid": 563405291513047,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 263177734820297,
+							"parameters": {
+								"object": "BotSlot"
+							}
+						},
+						{
+							"id": "is-animation-playing",
+							"objectClass": "BotSlot",
+							"sid": 198763946550856,
+							"parameters": {
+								"animation": "\"Selected\""
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "BotSlot",
+							"sid": 911346695001100,
+							"parameters": {
+								"object": "Botto"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "push",
+							"objectClass": "SelectedBotsArray",
+							"sid": 655903790599309,
+							"parameters": {
+								"where": "back",
+								"value": "BotSlot.Slot",
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 847794699866798
 				}
 			]
 		}

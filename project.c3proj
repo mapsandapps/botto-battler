@@ -48,6 +48,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
@@ -72,6 +80,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Fade",
 			"name": "Fade",
 			"author": "Scirra",
@@ -89,7 +105,10 @@
 			"Text",
 			"EnemiesArray",
 			"LastChosenEnemiesArray",
-			"EnemyContainer"
+			"EnemyContainer",
+			"OwnedBotsArray",
+			"SelectedBotsArray",
+			"BotSlot"
 		],
 		"subfolders": [
 			{
@@ -98,14 +117,15 @@
 					"JSON",
 					"AJAX",
 					"Browser",
-					"Audio"
+					"Audio",
+					"Mouse"
 				],
 				"subfolders": [],
 				"name": "Base"
 			},
 			{
 				"items": [
-					"ExcRandomIndexesArray"
+					"ExcRandomNumbersArray"
 				],
 				"subfolders": [],
 				"name": "Helper Arrays"
@@ -131,7 +151,8 @@
 	"layouts": {
 		"items": [
 			"Pick Encounter",
-			"Combat"
+			"Combat",
+			"Objects"
 		],
 		"subfolders": []
 	},
@@ -142,7 +163,9 @@
 			"eCombatHelpers",
 			"ePrepForCombat",
 			"ePickEncounter",
-			"eHelpers"
+			"eHelpers",
+			"eShop",
+			"eMouse"
 		],
 		"subfolders": []
 	},

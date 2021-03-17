@@ -1,0 +1,146 @@
+{
+	"name": "eMouse",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 807003641009311,
+					"parameters": {
+						"first-value": "LayoutName",
+						"comparison": 0,
+						"second-value": "\"Pick Encounter\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 735058224163148,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "cursor-is-over-object",
+							"objectClass": "Mouse",
+							"sid": 781074086749385,
+							"parameters": {
+								"object": "Enemy"
+							}
+						},
+						{
+							"id": "cursor-is-over-object",
+							"objectClass": "Mouse",
+							"sid": 535267367333597,
+							"parameters": {
+								"object": "InvisibleButton"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "Mouse",
+							"sid": 965172563824098,
+							"parameters": {
+								"cursor-style": "hand"
+							}
+						}
+					],
+					"sid": 125923536485662,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 548117878416165
+						},
+						{
+							"id": "cursor-is-over-object",
+							"objectClass": "Mouse",
+							"sid": 417208125130388,
+							"parameters": {
+								"object": "BotSlot"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 522183372308835,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "BotSlot",
+									"sid": 931360566326363,
+									"parameters": {
+										"object": "Botto"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-cursor-style",
+									"objectClass": "Mouse",
+									"sid": 574339127749759,
+									"parameters": {
+										"cursor-style": "hand"
+									}
+								}
+							],
+							"sid": 117578686481504
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 394647566685464
+								}
+							],
+							"actions": [
+								{
+									"id": "set-cursor-style",
+									"objectClass": "Mouse",
+									"sid": 877510185753546,
+									"parameters": {
+										"cursor-style": "normal"
+									}
+								}
+							],
+							"sid": 588910696483603
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 527702372858934
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "Mouse",
+							"sid": 927602719474348,
+							"parameters": {
+								"cursor-style": "normal"
+							}
+						}
+					],
+					"sid": 874016711744989
+				}
+			]
+		}
+	],
+	"sid": 598429841533207
+}

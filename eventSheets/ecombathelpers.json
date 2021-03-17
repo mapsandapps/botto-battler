@@ -159,6 +159,352 @@
 					]
 				}
 			]
+		},
+		{
+			"functionName": "PlaceBots",
+			"functionDescription": "",
+			"functionCategory": "Combat Helpers",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 967918458841816,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-element",
+							"objectClass": "SelectedBotsArray",
+							"sid": 901050801685467,
+							"parameters": {
+								"axes": "x"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "BotSlot",
+							"sid": 473837230591606,
+							"parameters": {
+								"instance-variable": "Slot",
+								"comparison": 0,
+								"value": "SelectedBotsArray.CurValue"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 496990945166811,
+							"parameters": {
+								"object-to-create": "Botto",
+								"layer": "\"Layer 0\"",
+								"x": "BotSlot.X",
+								"y": "BotSlot.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 501868974598891,
+							"parameters": {
+								"instance-variable": "Index",
+								"value": "SelectedBotsArray.CurValue"
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "Botto",
+							"sid": 940788660489828,
+							"parameters": {
+								"width": "Botto.Width * 0.64",
+								"height": "Botto.Height * 0.64"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Botto",
+							"sid": 263645090293234,
+							"parameters": {
+								"frame-number": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 0)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 721695316350970,
+							"parameters": {
+								"instance-variable": "HP",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 1)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 443165227248123,
+							"parameters": {
+								"instance-variable": "MaxHP",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 2)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 486500998980926,
+							"parameters": {
+								"instance-variable": "Wear",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 3)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 113178649390404,
+							"parameters": {
+								"instance-variable": "MaxWear",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 4)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 150195815320099,
+							"parameters": {
+								"instance-variable": "DamageRoll",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 5)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Botto",
+							"sid": 808432304319528,
+							"parameters": {
+								"instance-variable": "Initiative",
+								"value": "OwnedBotsArray.At(SelectedBotsArray.CurValue, 6)"
+							}
+						},
+						{
+							"callFunction": "CreateHPInfo",
+							"sid": 649784871138442,
+							"parameters": [
+								"Botto.UID",
+								"BotSlot.Slot"
+							]
+						},
+						{
+							"callFunction": "CreateWearInfo",
+							"sid": 910980554469877,
+							"parameters": [
+								"Botto.UID",
+								"BotSlot.Slot"
+							]
+						}
+					],
+					"sid": 546822414860281
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 605365346595006
+						},
+						{
+							"callFunction": "UpdateStats",
+							"sid": 326584027841191
+						}
+					],
+					"sid": 621774967822276
+				}
+			]
+		},
+		{
+			"functionName": "CreateHPInfo",
+			"functionDescription": "",
+			"functionCategory": "Combat Helpers",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "BottoUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 268385736855587
+				},
+				{
+					"name": "BotSlot",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 183039439064776
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Botto",
+					"sid": 327058471814325,
+					"parameters": {
+						"unique-id": "BottoUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 344314724144604,
+					"parameters": {
+						"object-to-create": "StatText",
+						"layer": "\"Layer 0\"",
+						"x": "Botto.X - 192",
+						"y": "Botto.Y + 64",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 898862471731414,
+					"parameters": {
+						"instance-variable": "BotIndex",
+						"value": "BotSlot"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 779087042163931,
+					"parameters": {
+						"instance-variable": "Character",
+						"value": "\"Botto\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 967771227278987,
+					"parameters": {
+						"instance-variable": "Stat",
+						"value": "\"HP\""
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "StatText",
+					"sid": 983071753704600,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Botto",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				}
+			],
+			"sid": 776018953213969
+		},
+		{
+			"functionName": "CreateWearInfo",
+			"functionDescription": "",
+			"functionCategory": "Combat Helpers",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "BottoUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 121872070683601
+				},
+				{
+					"name": "BotSlot",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 914540747239888
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Botto",
+					"sid": 229175900905395,
+					"parameters": {
+						"unique-id": "BottoUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 770037933775445,
+					"parameters": {
+						"object-to-create": "StatText",
+						"layer": "\"Layer 0\"",
+						"x": "Botto.X - 192",
+						"y": "Botto.Y + 96",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 633582514265874,
+					"parameters": {
+						"instance-variable": "BotIndex",
+						"value": "BotSlot"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 262192623849373,
+					"parameters": {
+						"instance-variable": "Character",
+						"value": "\"Botto\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "StatText",
+					"sid": 139006183402977,
+					"parameters": {
+						"instance-variable": "Stat",
+						"value": "\"Wear\""
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "StatText",
+					"sid": 541642027490462,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Botto",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				}
+			],
+			"sid": 761201269387271
 		}
 	],
 	"sid": 834515004063276
