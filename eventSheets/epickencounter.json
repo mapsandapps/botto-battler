@@ -942,9 +942,14 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-tap-object",
+					"id": "on-any-touch-start",
 					"objectClass": "Touch",
-					"sid": 701566487719880,
+					"sid": 463348163073574
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 686232675303981,
 					"parameters": {
 						"object": "BotSlot"
 					}
