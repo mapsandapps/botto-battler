@@ -191,7 +191,23 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "botdeselect.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 100900629331054
+				},
+				{
+					"name": "botselect.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 826931800764284
+				},
+				{
+					"name": "invalidselect.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 623276952459093
+				}
+			],
 			"subfolders": []
 		},
 		"music": {

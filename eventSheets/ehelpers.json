@@ -2,6 +2,16 @@
 	"name": "eHelpers",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "DefaultVolume",
+			"type": "number",
+			"initialValue": "-10",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 346995106800254
+		},
+		{
 			"eventType": "comment",
 			"text": "Gets amount random numbers in the range between minInclusive and maxExclusive without repeating and puts the results in ExcRandomIndexesArray"
 		},

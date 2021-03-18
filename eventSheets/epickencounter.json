@@ -286,79 +286,6 @@
 			]
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-tap-object",
-					"objectClass": "Touch",
-					"sid": 998543869372476,
-					"parameters": {
-						"object": "Enemy"
-					}
-				}
-			],
-			"actions": [],
-			"sid": 363490431279996,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-size",
-							"objectClass": "SelectedBotsArray",
-							"sid": 299257054866031,
-							"parameters": {
-								"axis": "x",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 517038906001317
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 664401314755647
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 784887036604127,
-							"parameters": {
-								"variable": "CurrentEnemyName",
-								"value": "Enemy.Name"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 944033812085658,
-							"parameters": {
-								"variable": "CurrentEnemyMaxHP",
-								"value": "Enemy.MaxHP"
-							}
-						},
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 183501591812456,
-							"parameters": {
-								"layout": "Combat"
-							}
-						}
-					],
-					"sid": 537734291417253
-				}
-			]
-		},
-		{
 			"functionName": "ReloadEnemyChoices",
 			"functionDescription": "",
 			"functionCategory": "Pick Encounter",
@@ -976,14 +903,6 @@
 					"id": "on-any-touch-start",
 					"objectClass": "Touch",
 					"sid": 463348163073574
-				},
-				{
-					"id": "is-touching-object",
-					"objectClass": "Touch",
-					"sid": 686232675303981,
-					"parameters": {
-						"object": "BotSlot"
-					}
 				}
 			],
 			"actions": [],
@@ -993,64 +912,212 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "is-animation-playing",
-							"objectClass": "BotSlot",
-							"sid": 755753354456344,
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 381180127506760,
 							"parameters": {
-								"animation": "\"Selected\""
+								"object": "Enemy"
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 246585917255503,
+					"children": [
 						{
-							"id": "set-animation",
-							"objectClass": "BotSlot",
-							"sid": 270581727704118,
-							"parameters": {
-								"animation": "\"Not Selected\"",
-								"from": "beginning"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-size",
+									"objectClass": "SelectedBotsArray",
+									"sid": 359074732772722,
+									"parameters": {
+										"axis": "x",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 266812961313410,
+									"parameters": {
+										"audio-file": "invalidselect",
+										"loop": "not-looping",
+										"volume": "DefaultVolume",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 555865523109364
 						},
 						{
-							"callFunction": "SetSelectedBots",
-							"sid": 364649160594150
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 671232500881710
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 925511582744872,
+									"parameters": {
+										"variable": "CurrentEnemyName",
+										"value": "Enemy.Name"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 553934146882494,
+									"parameters": {
+										"variable": "CurrentEnemyMaxHP",
+										"value": "Enemy.MaxHP"
+									}
+								},
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 134205851696882,
+									"parameters": {
+										"layout": "Combat"
+									}
+								}
+							],
+							"sid": 298743692960710
 						}
-					],
-					"sid": 936331407995635
+					]
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 415835929353371
-						},
-						{
-							"id": "is-overlapping-another-object",
-							"objectClass": "BotSlot",
-							"sid": 425793475840513,
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 143607591623282,
 							"parameters": {
-								"object": "Botto"
+								"object": "BotSlot"
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 652965341650571,
+					"children": [
 						{
-							"id": "set-animation",
-							"objectClass": "BotSlot",
-							"sid": 574844807976011,
-							"parameters": {
-								"animation": "\"Selected\"",
-								"from": "beginning"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "BotSlot",
+									"sid": 969779747135051,
+									"parameters": {
+										"animation": "\"Selected\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "BotSlot",
+									"sid": 323422783635599,
+									"parameters": {
+										"animation": "\"Not Selected\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 817545343821954,
+									"parameters": {
+										"audio-file": "botdeselect",
+										"loop": "not-looping",
+										"volume": "DefaultVolume",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"callFunction": "SetSelectedBots",
+									"sid": 711524511664652
+								}
+							],
+							"sid": 193999443168471
 						},
 						{
-							"callFunction": "SetSelectedBots",
-							"sid": 933912129052283
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 399793595588987
+								},
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "BotSlot",
+									"sid": 903552059589521,
+									"parameters": {
+										"object": "Botto"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "BotSlot",
+									"sid": 814021158365104,
+									"parameters": {
+										"animation": "\"Selected\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 726207241961624,
+									"parameters": {
+										"audio-file": "botselect",
+										"loop": "not-looping",
+										"volume": "DefaultVolume",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"callFunction": "SetSelectedBots",
+									"sid": 522269936346158
+								}
+							],
+							"sid": 363659025091588
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 979793423437508
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 611518953791758,
+									"parameters": {
+										"audio-file": "invalidselect",
+										"loop": "not-looping",
+										"volume": "DefaultVolume",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 218552556271446
 						}
-					],
-					"sid": 211878638193261
+					]
 				}
 			]
 		},
