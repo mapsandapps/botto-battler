@@ -81,6 +81,16 @@
 								"comparison": 2,
 								"value": "amount"
 							}
+						},
+						{
+							"id": "compare-size",
+							"objectClass": "ExcRandomNumbersArray",
+							"sid": 847039865453402,
+							"parameters": {
+								"axis": "x",
+								"comparison": 2,
+								"value": "MaxExclusive-MinInclusive"
+							}
 						}
 					],
 					"actions": [
