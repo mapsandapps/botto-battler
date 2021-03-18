@@ -297,35 +297,66 @@
 					}
 				}
 			],
-			"actions": [
+			"actions": [],
+			"sid": 363490431279996,
+			"children": [
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 246031136249538,
-					"parameters": {
-						"variable": "CurrentEnemyName",
-						"value": "Enemy.Name"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-size",
+							"objectClass": "SelectedBotsArray",
+							"sid": 299257054866031,
+							"parameters": {
+								"axis": "x",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 517038906001317
 				},
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 598831102764453,
-					"parameters": {
-						"variable": "CurrentEnemyMaxHP",
-						"value": "Enemy.MaxHP"
-					}
-				},
-				{
-					"id": "go-to-layout",
-					"objectClass": "System",
-					"sid": 721877879633385,
-					"parameters": {
-						"layout": "Combat"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 664401314755647
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 784887036604127,
+							"parameters": {
+								"variable": "CurrentEnemyName",
+								"value": "Enemy.Name"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 944033812085658,
+							"parameters": {
+								"variable": "CurrentEnemyMaxHP",
+								"value": "Enemy.MaxHP"
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 183501591812456,
+							"parameters": {
+								"layout": "Combat"
+							}
+						}
+					],
+					"sid": 537734291417253
 				}
-			],
-			"sid": 363490431279996
+			]
 		},
 		{
 			"functionName": "ReloadEnemyChoices",
