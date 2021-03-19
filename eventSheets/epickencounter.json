@@ -953,6 +953,10 @@
 							"sid": 555865523109364
 						},
 						{
+							"eventType": "comment",
+							"text": "Wait here is so you can here full audio before starting fight"
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -962,6 +966,25 @@
 								}
 							],
 							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 855556737938223,
+									"parameters": {
+										"audio-file": "startmonsterfight",
+										"loop": "not-looping",
+										"volume": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 886137390881766,
+									"parameters": {
+										"seconds": "1"
+									}
+								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",

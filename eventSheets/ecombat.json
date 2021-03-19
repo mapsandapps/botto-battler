@@ -279,6 +279,17 @@
 							}
 						},
 						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 117703409619700,
+							"parameters": {
+								"audio-file": "botprephit",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
 							"id": "add-to-instvar",
 							"objectClass": "Botto",
 							"sid": 327735628647242,
@@ -335,6 +346,17 @@
 							"parameters": {
 								"variable": "DefenderUID",
 								"value": "Botto.UID"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 321876659034368,
+							"parameters": {
+								"audio-file": "monsterattack",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
 							}
 						},
 						{

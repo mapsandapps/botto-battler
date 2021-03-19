@@ -206,6 +206,21 @@
 					"name": "invalidselect.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 623276952459093
+				},
+				{
+					"name": "monsterattack.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 261030097933380
+				},
+				{
+					"name": "startmonsterfight.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 112172250359108
+				},
+				{
+					"name": "botprephit.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 701848326579972
 				}
 			],
 			"subfolders": []
