@@ -30,16 +30,16 @@
 			"actions": [
 				{
 					"id": "set-animation-frame",
-					"objectClass": "Enemy",
-					"sid": 196914083952700,
+					"objectClass": "EnemyCombat",
+					"sid": 706293524147201,
 					"parameters": {
 						"frame-number": "JSON.Get(\"enemies.\" & CurrentEnemyName & \".animationFrame\")"
 					}
 				},
 				{
 					"id": "set-instvar-value",
-					"objectClass": "Enemy",
-					"sid": 794530488459586,
+					"objectClass": "EnemyCombat",
+					"sid": 797705215575527,
 					"parameters": {
 						"instance-variable": "HP",
 						"value": "CurrentEnemyMaxHP"
@@ -47,8 +47,8 @@
 				},
 				{
 					"id": "set-instvar-value",
-					"objectClass": "Enemy",
-					"sid": 982543967740967,
+					"objectClass": "EnemyCombat",
+					"sid": 624577443245316,
 					"parameters": {
 						"instance-variable": "MaxHP",
 						"value": "CurrentEnemyMaxHP"

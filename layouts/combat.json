@@ -6,61 +6,6 @@
 			"overriden": 0,
 			"instances": [
 				{
-					"type": "Enemy",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Full",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 2,
-					"instanceVariables": {
-						"DamageRoll": "3d6+4",
-						"Initiative": 50,
-						"HP": 36,
-						"MaxHP": 36,
-						"HasTakenTurn": false,
-						"Name": ""
-					},
-					"behaviors": {
-						"Fade": {
-							"properties": {
-								"fade-in-time": 0,
-								"wait-time": 0,
-								"fade-out-time": 1,
-								"destroy": true,
-								"enabled": false,
-								"live-preview": false
-							}
-						},
-						"Flash": {
-							"properties": {}
-						},
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": 1024,
-						"y": 320,
-						"width": 275,
-						"height": 420,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "StatText",
 					"properties": {
 						"text": "Text",
@@ -255,6 +200,61 @@
 						"y": 480,
 						"width": 192,
 						"height": 192,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "EnemyCombat",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Full",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 2,
+					"instanceVariables": {
+						"DamageRoll": "3d6+4",
+						"Initiative": 50,
+						"HP": 36,
+						"MaxHP": 36,
+						"HasTakenTurn": false,
+						"Name": ""
+					},
+					"behaviors": {
+						"Fade": {
+							"properties": {
+								"fade-in-time": 0,
+								"wait-time": 0,
+								"fade-out-time": 1,
+								"destroy": true,
+								"enabled": false,
+								"live-preview": false
+							}
+						},
+						"Flash": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 1024,
+						"y": 320,
+						"width": 244.44444444444443,
+						"height": 373.3333333333333,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

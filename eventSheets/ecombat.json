@@ -272,10 +272,10 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 771820053937301,
+							"sid": 952828377422939,
 							"parameters": {
 								"variable": "DefenderUID",
-								"value": "Enemy.UID"
+								"value": "EnemyCombat.UID"
 							}
 						},
 						{
@@ -361,13 +361,13 @@
 						},
 						{
 							"id": "tween-one-property",
-							"objectClass": "Enemy",
-							"sid": 732318664265189,
+							"objectClass": "EnemyCombat",
+							"sid": 742692611028998,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"\"",
 								"property": "offsetX",
-								"end-value": "Enemy.X - 16",
+								"end-value": "EnemyCombat.X - 16",
 								"time": "0.1",
 								"ease": "default",
 								"destroy-on-complete": "no",
@@ -516,8 +516,8 @@
 					"actions": [
 						{
 							"id": "flash",
-							"objectClass": "Enemy",
-							"sid": 151098316220744,
+							"objectClass": "EnemyCombat",
+							"sid": 468814027161489,
 							"behaviorType": "Flash",
 							"parameters": {
 								"on-time": "0.1",
@@ -640,9 +640,9 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 173951587637005,
+							"sid": 646839768665804,
 							"parameters": {
-								"first-value": "Enemy.Count",
+								"first-value": "EnemyCombat.Count",
 								"comparison": 0,
 								"second-value": "0"
 							}

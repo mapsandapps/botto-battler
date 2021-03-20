@@ -332,30 +332,13 @@
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 990748513367984,
-							"parameters": {
-								"instance-variable": "Name",
-								"value": "EnemiesArray.At(EnemyArrayIndex,0)"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 169764410665118,
-							"parameters": {
-								"instance-variable": "MaxHP",
-								"value": "EnemiesArray.At(EnemyArrayIndex,1)"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Enemy",
-							"sid": 260128848354989,
-							"parameters": {
-								"frame-number": "Functions.GetEnemyAnimationFrame(Enemy.Name)"
-							}
+							"callFunction": "SetEnemyInfoInContainer",
+							"sid": 989770529454323,
+							"parameters": [
+								"EnemyContainer.UID",
+								"EnemiesArray.At(EnemyArrayIndex, 1)",
+								"EnemiesArray.At(EnemyArrayIndex, 0)"
+							]
 						}
 					],
 					"sid": 156624475077045
@@ -446,35 +429,18 @@
 							}
 						},
 						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 184813377451472,
-							"parameters": {
-								"instance-variable": "Name",
-								"value": "EnemiesArray.At(EnemyArrayIndex,0)"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 168855413701515,
-							"parameters": {
-								"instance-variable": "MaxHP",
-								"value": "EnemiesArray.At(EnemyArrayIndex,1)"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Enemy",
-							"sid": 102906347955650,
-							"parameters": {
-								"frame-number": "Functions.GetEnemyAnimationFrame(Enemy.Name)"
-							}
+							"callFunction": "SetEnemyInfoInContainer",
+							"sid": 623249150446339,
+							"parameters": [
+								"EnemyContainer.UID",
+								"EnemiesArray.At(EnemyArrayIndex, 1)",
+								"EnemiesArray.At(EnemyArrayIndex, 0)"
+							]
 						},
 						{
 							"id": "push",
 							"objectClass": "LastChosenEnemiesArray",
-							"sid": 697023289930523,
+							"sid": 472504353488107,
 							"parameters": {
 								"where": "back",
 								"value": "EnemyArrayIndex",
@@ -829,10 +795,10 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 436939507628194,
+							"sid": 146426597294238,
 							"parameters": {
 								"object-to-create": "Botto",
-								"layer": "\"Layer 0\"",
+								"layer": "\"Characters\"",
 								"x": "BotSlot.X",
 								"y": "BotSlot.Y",
 								"create-hierarchy": false
@@ -914,9 +880,9 @@
 						{
 							"id": "is-touching-object",
 							"objectClass": "Touch",
-							"sid": 381180127506760,
+							"sid": 916382612384329,
 							"parameters": {
-								"object": "Enemy"
+								"object": "EnemyContainer"
 							}
 						}
 					],
@@ -991,7 +957,7 @@
 									"sid": 925511582744872,
 									"parameters": {
 										"variable": "CurrentEnemyName",
-										"value": "Enemy.Name"
+										"value": "EnemyPick.Name"
 									}
 								},
 								{
@@ -1000,7 +966,7 @@
 									"sid": 553934146882494,
 									"parameters": {
 										"variable": "CurrentEnemyMaxHP",
-										"value": "Enemy.MaxHP"
+										"value": "EnemyPick.MaxHP"
 									}
 								},
 								{
@@ -1210,6 +1176,109 @@
 					"sid": 847794699866798
 				}
 			]
+		},
+		{
+			"functionName": "SetEnemyInfoInContainer",
+			"functionDescription": "",
+			"functionCategory": "Pick Encounter",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ContainerUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 144184512004105
+				},
+				{
+					"name": "EnemyMaxHP",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 136963290848416
+				},
+				{
+					"name": "EnemyName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 887684068087018
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "EnemyContainer",
+					"sid": 734216798655750,
+					"parameters": {
+						"unique-id": "ContainerUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "EnemyPick",
+					"sid": 974921233636352,
+					"parameters": {
+						"instance-variable": "Name",
+						"value": "EnemyName"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "EnemyPick",
+					"sid": 218302110354630,
+					"parameters": {
+						"instance-variable": "MaxHP",
+						"value": "EnemyMaxHP"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "EnemyPick",
+					"sid": 573334696740176,
+					"parameters": {
+						"frame-number": "Functions.GetEnemyAnimationFrame(EnemyName)"
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "EnemyPick",
+					"sid": 477174418335343,
+					"parameters": {
+						"width": "112",
+						"height": "112"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "NameText",
+					"sid": 905326658587837,
+					"parameters": {
+						"text": "EnemyName"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LevelText",
+					"sid": 251691656647018,
+					"parameters": {
+						"text": "\"Level: \" & Functions.GetEnemyLevel(EnemyName)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "HPText",
+					"sid": 986290702381851,
+					"parameters": {
+						"text": "\"HP: \" & EnemyMaxHP"
+					}
+				}
+			],
+			"sid": 179788638920456
 		}
 	],
 	"sid": 377988339899397

@@ -59,7 +59,8 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"Enemy",
-		"Botto"
+		"EnemyPick",
+		"Botto",
+		"EnemyCombat"
 	]
 }

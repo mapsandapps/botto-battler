@@ -41,9 +41,9 @@
 						{
 							"id": "set-text",
 							"objectClass": "StatText",
-							"sid": 137650362226374,
+							"sid": 562479460329055,
 							"parameters": {
-								"text": "\"HP: \" & Enemy.HP & \"/\" & Enemy.MaxHP"
+								"text": "\"HP: \" & EnemyCombat.HP & \"/\" & EnemyCombat.MaxHP"
 							}
 						}
 					],

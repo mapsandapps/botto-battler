@@ -64,16 +64,16 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Sprite",
-			"name": "Sprite",
+			"id": "Text",
+			"name": "Text",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
 		},
 		{
 			"type": "plugin",
-			"id": "Text",
-			"name": "Text",
+			"id": "Sprite",
+			"name": "Sprite",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
@@ -114,17 +114,15 @@
 	"uniqueId": "hw4jzq04umi",
 	"objectTypes": {
 		"items": [
-			"Enemy",
+			"EnemyPick",
 			"Botto",
-			"StatText",
 			"InvisibleButton",
 			"Text",
-			"EnemiesArray",
-			"LastChosenEnemiesArray",
-			"EnemyContainer",
 			"OwnedBotsArray",
 			"SelectedBotsArray",
-			"BotSlot"
+			"BotSlot",
+			"Background",
+			"EnemyCombat"
 		],
 		"subfolders": [
 			{
@@ -145,6 +143,25 @@
 				],
 				"subfolders": [],
 				"name": "Helper Arrays"
+			},
+			{
+				"items": [
+					"StatText"
+				],
+				"subfolders": [],
+				"name": "Combat"
+			},
+			{
+				"items": [
+					"EnemiesArray",
+					"LastChosenEnemiesArray",
+					"EnemyContainer",
+					"NameText",
+					"HPText",
+					"LevelText"
+				],
+				"subfolders": [],
+				"name": "Pick Encounter"
 			}
 		]
 	},
@@ -152,8 +169,11 @@
 	"containers": [
 		{
 			"members": [
-				"Enemy",
-				"EnemyContainer"
+				"EnemyPick",
+				"EnemyContainer",
+				"HPText",
+				"LevelText",
+				"NameText"
 			],
 			"selectMode": "normal"
 		}
@@ -234,7 +254,18 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "Metamorphous-Regular.ttf",
+					"type": "application/font-sfnt",
+					"sid": 796167883530248
+				},
+				{
+					"name": "OdibeeSans-Regular.ttf",
+					"type": "application/font-sfnt",
+					"sid": 317566522024913
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {

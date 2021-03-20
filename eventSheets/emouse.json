@@ -24,9 +24,9 @@
 						{
 							"id": "cursor-is-over-object",
 							"objectClass": "Mouse",
-							"sid": 781074086749385,
+							"sid": 821364398586919,
 							"parameters": {
-								"object": "Enemy"
+								"object": "EnemyContainer"
 							}
 						},
 						{
