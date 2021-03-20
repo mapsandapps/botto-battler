@@ -238,7 +238,7 @@
 			"functionName": "GetEnemyLevel",
 			"functionDescription": "",
 			"functionCategory": "Helpers",
-			"functionReturnType": "string",
+			"functionReturnType": "number",
 			"functionIsAsync": false,
 			"functionParameters": [
 				{
@@ -246,7 +246,7 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 286997707250925
+					"sid": 761966830375868
 				}
 			],
 			"eventType": "function-block",
@@ -255,13 +255,13 @@
 				{
 					"id": "set-function-return-value",
 					"objectClass": "Functions",
-					"sid": 155879025276238,
+					"sid": 124206795690080,
 					"parameters": {
 						"value": "JSON.Get(\"enemies.\" & EnemyName & \".level\")"
 					}
 				}
 			],
-			"sid": 838548536423737
+			"sid": 167384482615104
 		}
 	],
 	"sid": 438012762763126

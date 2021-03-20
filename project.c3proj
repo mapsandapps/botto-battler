@@ -114,15 +114,13 @@
 	"uniqueId": "hw4jzq04umi",
 	"objectTypes": {
 		"items": [
-			"EnemyPick",
 			"Botto",
 			"InvisibleButton",
 			"Text",
 			"OwnedBotsArray",
 			"SelectedBotsArray",
 			"BotSlot",
-			"Background",
-			"EnemyCombat"
+			"Background"
 		],
 		"subfolders": [
 			{
@@ -146,7 +144,8 @@
 			},
 			{
 				"items": [
-					"StatText"
+					"StatText",
+					"EnemyCombat"
 				],
 				"subfolders": [],
 				"name": "Combat"
@@ -158,7 +157,8 @@
 					"EnemyContainer",
 					"NameText",
 					"HPText",
-					"LevelText"
+					"LevelText",
+					"EnemyPick"
 				],
 				"subfolders": [],
 				"name": "Pick Encounter"

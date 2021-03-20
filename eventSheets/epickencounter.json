@@ -1264,7 +1264,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "LevelText",
-					"sid": 251691656647018,
+					"sid": 953920097479231,
 					"parameters": {
 						"text": "\"Level: \" & Functions.GetEnemyLevel(EnemyName)"
 					}
